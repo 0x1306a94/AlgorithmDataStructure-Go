@@ -1,9 +1,9 @@
 package list
 
-const ELEMENT_NOT_FOUND int = -1
+// 元素索引未找到
+const ElementNotFound int = -1
 
 type List interface {
-
 	Clear()
 
 	Size() int
@@ -25,6 +25,4 @@ type List interface {
 	RemoveOfElement(e interface{})
 
 	IndexOfElement(e interface{}) int
-
 }
-
