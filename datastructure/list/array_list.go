@@ -6,7 +6,7 @@ import (
 )
 
 type ArrayList struct {
-	AbstractList
+	_AbstractList
 	// 存放元素slice
 	elements []interface{}
 }
@@ -17,7 +17,7 @@ func NewArrayList(capacity int) *ArrayList {
 		capacity = DefaultArrayListCapacity
 	}
 	return &ArrayList{
-		AbstractList: AbstractList{
+		_AbstractList: _AbstractList{
 			size: 0,
 		},
 		elements: make([]interface{}, capacity),

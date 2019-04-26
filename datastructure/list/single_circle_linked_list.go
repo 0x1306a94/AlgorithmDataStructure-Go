@@ -6,11 +6,11 @@ type SingleCircleLinkedList struct {
 
 func NewSingleCircleLinkedList() *SingleCircleLinkedList {
 	return &SingleCircleLinkedList{
-		SingleLinkedList{
-			AbstractList{
+		SingleLinkedList: SingleLinkedList{
+			_AbstractList: _AbstractList{
 				size: 0,
 			},
-			nil,
+			first: nil,
 		},
 	}
 }

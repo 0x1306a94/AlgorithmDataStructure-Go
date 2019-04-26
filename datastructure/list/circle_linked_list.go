@@ -10,7 +10,7 @@ func NewCircleLinkedList() *CircleLinkedList {
 	return &CircleLinkedList{
 		LinkedList: LinkedList{
 			SingleLinkedList: SingleLinkedList{
-				AbstractList: AbstractList{
+				_AbstractList: _AbstractList{
 					size: 0,
 				},
 				first: nil,

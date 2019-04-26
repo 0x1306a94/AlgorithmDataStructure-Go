@@ -13,7 +13,7 @@ type LinkedList struct {
 func NewLinkedList() *LinkedList {
 	return &LinkedList{
 		SingleLinkedList: SingleLinkedList{
-			AbstractList: AbstractList{
+			_AbstractList: _AbstractList{
 				size: 0,
 			},
 			first: nil,

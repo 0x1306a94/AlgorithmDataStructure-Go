@@ -6,14 +6,14 @@ import (
 )
 
 type SingleLinkedList struct {
-	AbstractList
+	_AbstractList
 	// 头结点
 	first *_Node
 }
 
 func NewSingleLinkedList() *SingleLinkedList {
 	return &SingleLinkedList{
-		AbstractList: AbstractList{
+		_AbstractList: _AbstractList{
 			size: 0,
 		},
 		first: nil,

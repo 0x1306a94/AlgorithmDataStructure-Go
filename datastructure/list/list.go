@@ -26,32 +26,32 @@ type List interface {
 	IndexOfElement(e interface{}) int
 }
 
-type AbstractList struct {
+type _AbstractList struct {
 	// 已经存储的元素数量
 	size int
 	// 自定义元素判等函数
 	Equal func(v1, v2 interface{}) bool
 }
 
-func (a *AbstractList) Size() int {
+func (a *_AbstractList) Size() int {
 	return a.size
 }
 
-func (a *AbstractList) IsEmpty() bool {
+func (a *_AbstractList) IsEmpty() bool {
 	return a.size == 0
 }
 
-func (a *AbstractList) outOfBounds(index int) {
+func (a *_AbstractList) outOfBounds(index int) {
 	panic(fmt.Sprintf("Index: %v, Size: %v", index, a.size))
 }
 
-func (a *AbstractList) rangeCheck(index int) {
+func (a *_AbstractList) rangeCheck(index int) {
 	if index < 0 || index >= a.size {
 		a.outOfBounds(index)
 	}
 }
 
-func (a *AbstractList) rangeCheckForAdd(index int) {
+func (a *_AbstractList) rangeCheckForAdd(index int) {
 	if index < 0 || index > a.size {
 		a.outOfBounds(index)
 	}
