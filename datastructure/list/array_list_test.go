@@ -8,12 +8,12 @@ import (
 func TestArrayList(t *testing.T) {
 
 	var list List
-	list = New(10)
+	list = NewArrayList(10)
 
 	for i := 0; i < 10; i++ {
 		list.Add(i)
 	}
-
+	fmt.Println(list)
 	for i := 10; i < 15; i++ {
 		list.Add(i)
 	}

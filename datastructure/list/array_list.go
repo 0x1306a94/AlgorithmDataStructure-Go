@@ -1,29 +1,25 @@
 package list
 
-import "fmt"
-
-// ArrayList 默认容量
-const DefaultArrayListCapacity int = 10
+import (
+	"fmt"
+	"strings"
+)
 
 type ArrayList struct {
-	// 已经存储的元素数量
-	size int
-	// 元素容量
-	capacity int
+	AbstractList
 	// 存放元素slice
 	elements []interface{}
-	// 自定义元素判等函数
-	Equal func(v1, v2 interface{}) bool
 }
 
 // 创建 ArrayList, capacity 参数为初始容量, 如果小于10 则默认为10
-func New(capacity int) *ArrayList {
+func NewArrayList(capacity int) *ArrayList {
 	if capacity < DefaultArrayListCapacity {
 		capacity = DefaultArrayListCapacity
 	}
 	return &ArrayList{
-		size:     0,
-		capacity: capacity,
+		AbstractList: AbstractList{
+			size: 0,
+		},
 		elements: make([]interface{}, capacity),
 	}
 }
@@ -34,16 +30,6 @@ func (a *ArrayList) Clear() {
 	if cap(a.elements) > DefaultArrayListCapacity {
 		a.elements = make([]interface{}, DefaultArrayListCapacity)
 	}
-}
-
-// 获取ArrayList元素数量
-func (a *ArrayList) Size() int {
-	return a.size
-}
-
-// ArrayList 是否为空
-func (a *ArrayList) IsEmpty() bool {
-	return a.size == 0
 }
 
 // 检查 ArrayList 是否包含指定元素
@@ -116,20 +102,6 @@ func (a *ArrayList) IndexOfElement(e interface{}) int {
 	return ElementNotFound
 }
 
-// 索引边界检查
-func (a *ArrayList) rangeCheck(index int) {
-	if index < 0 || index >= a.size {
-		panic("rangeCheck: 索引越界")
-	}
-}
-
-// 添加索引边界检查
-func (a *ArrayList) rangeCheckForAdd(index int) {
-	if index < 0 || index > a.size {
-		panic("rangeCheckForAdd: 索引越界")
-	}
-}
-
 // ArrayList 扩容, 以1.5 倍扩容
 func (a *ArrayList) ensureCapacity(capacity int) {
 	oldCapacity := cap(a.elements)
@@ -161,5 +133,14 @@ func (a *ArrayList) trim() {
 }
 
 func (a *ArrayList) String() string {
-	return fmt.Sprint(a.elements)
+	builder := &strings.Builder{}
+	fmt.Fprintf(builder, "ArrayList: capacity=%v, size=%v, [", cap(a.elements), a.size)
+	for i := 0; i < a.size; i++ {
+		if i != 0 {
+			builder.WriteString(", ")
+		}
+		fmt.Fprint(builder, a.elements[i])
+	}
+	builder.WriteString("]")
+	return builder.String()
 }
