@@ -9,6 +9,8 @@ func TestArrayList(t *testing.T) {
 
 	var list List
 	list = NewArrayList(10)
+	testList(t, list)
+	list.Clear()
 
 	for i := 0; i < 10; i++ {
 		list.Add(i)

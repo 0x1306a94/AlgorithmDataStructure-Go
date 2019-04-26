@@ -9,7 +9,8 @@ func TestNewLinkedList(t *testing.T) {
 
 	var list List
 	list = NewLinkedList()
-
+	testList(t, list)
+	list.Clear()
 	for i := 0; i < 10; i++ {
 		list.Add(i)
 	}

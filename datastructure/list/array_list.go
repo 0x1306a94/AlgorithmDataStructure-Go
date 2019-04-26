@@ -47,7 +47,7 @@ func (a *ArrayList) AddForIndex(index int, e interface{}) {
 	a.rangeCheckForAdd(index)
 
 	a.ensureCapacity(a.size + 1)
-	for i := a.size; i > a.size; i-- {
+	for i := a.size; i > index; i-- {
 		a.elements[i] = a.elements[i-1]
 	}
 	a.elements[index] = e

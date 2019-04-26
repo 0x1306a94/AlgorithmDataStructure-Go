@@ -10,6 +10,8 @@ func TestNewSingleLinkedList(t *testing.T) {
 	var list List
 	list = NewSingleLinkedList()
 
+	testList(t, list)
+	list.Clear()
 	for i := 0; i < 10; i++ {
 		list.Add(i)
 	}
