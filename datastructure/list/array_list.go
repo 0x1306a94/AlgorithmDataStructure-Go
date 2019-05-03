@@ -51,7 +51,7 @@ func (a *ArrayList) AddForIndex(index int, e interface{}) {
 		a.elements[i] = a.elements[i-1]
 	}
 	a.elements[index] = e
-	a.size += 1
+	a.size++
 }
 
 // 获取ArrayList中指定索引元素, 请注意索引是否越界
@@ -75,7 +75,7 @@ func (a *ArrayList) Remove(index int) interface{} {
 	for i := index + 1; i < a.size; i++ {
 		a.elements[i-1] = a.elements[i]
 	}
-	a.size -= 1
+	a.size--
 	a.elements[a.size] = nil
 	a.trim()
 	return old
